@@ -1751,3 +1751,72 @@ footer small a[href*="cashwebstudio.com"]:hover{transform:translateY(-2px)}
     margin-top:4px;
   }
 }
+
+/* Give Why we began the same framed field as How we show up */
+.about-page .story-layout{
+  background:#eaf3f5;
+  border-left:10px solid var(--blue);
+}
+.about-page .story-layout::before{
+  display:none;
+}
+.about-page .story-layout::after{
+  display:block;
+  top:0;
+  right:0;
+  bottom:auto;
+  width:110px;
+  height:10px;
+  background:var(--plum);
+  clip-path:none;
+  opacity:1;
+}
+@media(max-width:600px){
+  .about-page .story-layout{
+    border-left-width:8px;
+  }
+  .about-page .story-layout::after{
+    width:82px;
+    height:8px;
+  }
+}
+
+/* Full-width Care begins image statement */
+.about-page .about-image-break{
+  width:100%;
+  max-width:none;
+  margin-left:0;
+  margin-right:0;
+  padding:0;
+}
+.about-page .about-image-break img{
+  width:100%;
+  max-width:none;
+  height:100%;
+  margin:0;
+}
+.about-page .about-image-break::after{
+  inset:0;
+}
+.about-page .about-image-break blockquote{
+  right:7%;
+}
+@media(max-width:600px){
+  .about-page .about-image-break{
+    height:560px;
+    padding:0;
+  }
+  .about-page .about-image-break img{
+    height:100%;
+  }
+  .about-page .about-image-break::after{
+    inset:0;
+  }
+  .about-page .about-image-break blockquote{
+    left:24px;
+    right:24px;
+    top:auto;
+    bottom:36px;
+    width:auto;
+  }
+}
