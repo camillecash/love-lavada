@@ -23,12 +23,33 @@ const createInstagramLink = (labelText = "@lovelavadainc") => {
   return link;
 };
 
+const createFacebookLink = (labelText = "Facebook") => {
+  const link = document.createElement("a");
+  link.className = "facebook-link";
+  link.href = "https://www.facebook.com/profile.php?id=61577497346823";
+  link.target = "_blank";
+  link.rel = "noreferrer";
+  link.setAttribute("aria-label", "Love LaVada on Facebook");
+
+  const icon = document.createElement("span");
+  icon.className = "facebook-icon";
+  icon.setAttribute("aria-hidden", "true");
+  link.append(icon);
+
+  if (labelText) {
+    const label = document.createElement("span");
+    label.textContent = labelText;
+    link.append(label);
+  }
+  return link;
+};
+
 document.querySelectorAll("footer > div:nth-child(3)").forEach((contactDetails) => {
   const followRow = document.createElement("div");
   followRow.className = "footer-social";
   const followLabel = document.createElement("span");
   followLabel.textContent = "Connect With Us:";
-  followRow.append(followLabel, createInstagramLink(""));
+  followRow.append(followLabel, createInstagramLink(""), createFacebookLink(""));
   contactDetails.append(followRow);
 });
 
@@ -47,16 +68,24 @@ if (contactCard) {
   socialLabel.textContent = "Instagram";
   socialRow.append(socialLabel, createInstagramLink());
   contactCard.append(socialRow);
+
+  const facebookRow = document.createElement("div");
+  const facebookLabel = document.createElement("span");
+  facebookLabel.textContent = "Facebook";
+  facebookRow.append(facebookLabel, createFacebookLink("Love LaVada, Inc"));
+  contactCard.append(facebookRow);
 }
 
 const menuButton = document.querySelector(".menu");
 const navigation = document.querySelector("#nav");
 
 if (menuButton && navigation) {
+  menuButton.setAttribute("aria-label", "Open navigation");
   menuButton.addEventListener("click", () => {
     const isOpen = navigation.classList.toggle("open");
+    menuButton.classList.toggle("is-open", isOpen);
     menuButton.setAttribute("aria-expanded", String(isOpen));
-    menuButton.textContent = isOpen ? "Close" : "Menu";
+    menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
   });
 }
 
